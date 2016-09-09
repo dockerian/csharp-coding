@@ -1,0 +1,2 @@
+- added more traversal methods to BinaryTree
+- added comments for documentation

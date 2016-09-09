@@ -1,0 +1,152 @@
+#region Array
+/*//
+You are given a 2D array that is your sea. 
+It has more than one ships which don't overlap each other. 
+All ships are not necessarily of the same size. 
+You are to improve on performance and space is no concern. 
+Write a program that takes in two co-ordinates:
+If the attack co-ordinates did not have a ship, print "Missed"
+If the attack co-ordinates have a ship, print "Attacked Ship <Name>"
+If the attack co-ordinates have a the same part of the attacked ship, print "Already Attacked"
+If the last piece of the un-attacked ship was attacked print: "Ship sunk".
+//*/
+public enum AttackType
+{
+	Attacked,
+	AlreadyAttacked,
+	Missed,
+	Sunk,
+}
+public static AttackType CaculateAttackCasualty(int[] array, int xAttack, yAttack)
+{
+}
+
+/*//
+Find K Min Values in an array
+//*/
+public static int[] GetMaxNumbers(int[] array, int k)
+{
+}
+
+/*//
+In an array of unsorted integers, write a function 
+int GetNthMax(int[] arr, int n)
+which will return the nth Max number. 
+For e.g. if this is given array {2, -4, 5, 6, 0, 7, -1, 10, 9} and n=1, 
+it should return the max number, 10 
+and if n=3, it should return 3rd max number, which is: 7
+//*/
+public static int GetNthMax(int[] array, int nth)
+{
+}
+
+/*//
+Given an array of numbers, arrange it such that all the numbers less than a given key 
+should come before the key and all the numbers greater than the key should come after it.
+For example: arr = { 0, -1, -2, 2, 0, 3, 5}, given key = 0 
+answer should be {-1, -2, 0, 0, 2, 3, 5}
+Order of elements smaller than or greater than key does not matter 
+i.e. sorting is not expected. So, {-1,-2, 0, 0, 5, 2, 3} is also a correct answer.
+//*/
+public static int[] SortArrayByKey(int[] array, int key)
+{
+	return array[];
+}
+
+#endregion
+
+
+#region BTree/Hash
+/*//
+Consider a file containing a list of 100,000 license plate numbers which 
+follow the format ABC-123 and could be any value ranging from AAA-001 to ZZZ-999. 
+This data is expected to be read-in and stored in memory based on following requirements: 
+ • The list can be reconstructed using the stored data. Original sequence does not need to be maintained. 
+ • Perform searches efficiently on the stored data using the first 3 characters of the number as given below : 
+ • List all licenses starting with ‘MMM’ 
+ • Count the total number license numbers starting with ABC
+//*/
+
+/*//
+Design a tree, in which a node can have unlimited children 
+and write a code to print each level in separate level.
+As the number of children is large we can't store them in queue.
+Can we do it without extra space?
+//*/
+
+/*//
+Given a pointer to a node in tree, you have to find the depth of that node.
+//*/
+public static int GetDepth(BTreeNode root, BTreeNode node)
+{
+}
+
+/*//
+Given a binary tree with each node having a pointer to its parent, 
+Write a function that can find the immediate right neighbour of a given node. Don't use BFS. 
+Node* RightNeighbor(Node* node)
+Note: Root of the tree is not given
+//*/
+public static BTreeNode GetImmediateRightNeighbour(BTreeNode root, BTreeNode node)
+{
+}
+
+/*//
+Find the largest k elements from a large file.
+You don't have RAM to store even k elements.
+//*/
+public static string[] GetLargestKElments()
+{
+}
+
+/*//
+Given the level order traversal of a complete binary tree in an array, 
+how to find the in-order traversal of the said tree, without building up the tree. 
+Is there an in-place non-recursive O(n) solution for the said problem?
+//*/
+
+
+#endregion
+
+
+#region String
+/*//
+Imagine an alphabet of words. Example:
+	a ==> 1
+	b ==> 2
+	c ==> 3
+	...
+	z ==> 26
+	ab ==> 27
+	ac ==> 28
+	...
+	az ==> 51
+	bc ==> 52
+and so on.
+Such that the sequence of characters need to be in ascending order only (ab is valid but ba is not). 
+Given any word print its index if valid and 0 if not.
+	Input Output
+	ab    27
+	ba    0
+	aez   441
+//*/
+
+/*//
+Given a sentence and a word as arguments to a functions,
+write a efficient algorithm for finding the number of times the 
+word exists in the sentence.
+//*/
+
+#endregion
+
+
+#region Sort
+/*//
+Compare
+-Heap sort Vs Quick sort - worst case, avg case and best case with applications 
+-Heap sort Vs Merge sort - worst case, applications 
+Don’t confuse heap sort with building min.max heaps
+//*/
+
+#endregion
+

@@ -1,0 +1,8 @@
+[paths]
+default = C:\projects\private\coding-csharp
+cduan = E:\coding-csharp
+
+
+[tortoisehg]
+postpull = update
+autoresolve = True

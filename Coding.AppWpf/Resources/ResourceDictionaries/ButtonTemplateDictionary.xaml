@@ -1,0 +1,413 @@
+﻿<ResourceDictionary 
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:Controls="clr-namespace:Coding.AppWpf.Controls" 
+    mc:Ignorable="d"
+    >
+
+    <Style x:Key="BlankButton" TargetType="{x:Type Button}">
+        <Setter Property="Background" Value="{x:Null}"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <ContentPresenter 
+                        x:Name="contentPresenter"
+                        RenderTransformOrigin="0.5,0.5" Margin="{TemplateBinding Padding}"
+                        HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" 
+                        VerticalAlignment="{TemplateBinding VerticalContentAlignment}"  
+                        >
+                        <ContentPresenter.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform/>
+                                <RotateTransform/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </ContentPresenter.RenderTransform>
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup x:Name="CommonStates">
+                                <VisualStateGroup.Transitions>
+                                    <VisualTransition GeneratedDuration="0:0:0.5"/>
+                                </VisualStateGroup.Transitions>
+                                <VisualState x:Name="Disabled"/>
+                                <VisualState x:Name="Normal"/>
+                                <VisualState x:Name="MouseOver"/>
+                                <VisualState x:Name="Pressed"/>
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
+                        </ContentPresenter>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="BlankToggleButton" TargetType="{x:Type ToggleButton}">
+        <Setter Property="Background" Value="{x:Null}"/>
+        <Setter Property="BorderBrush" Value="{x:Null}"/>
+        <Setter Property="FontFamily" Value="{DynamicResource DefaultFont}"/>
+        <Setter Property="FontSize" Value="{DynamicResource  DefaultFontSize}"/>
+        <Setter Property="Foreground" Value="{DynamicResource ButtonDefaultForeground}"/>
+        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="Padding" Value="5,1"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type ToggleButton}">
+                    <Grid Background="{TemplateBinding Background}">
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup x:Name="CommonStates">
+                                <VisualStateGroup.Transitions>
+                                    <VisualTransition GeneratedDuration="0:0:0.5"/>
+                                </VisualStateGroup.Transitions>
+                                <VisualState x:Name="Disabled"/>
+                                <VisualState x:Name="Normal"/>
+                                <VisualState x:Name="MouseOver"/>
+                                <VisualState x:Name="Pressed"/>
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
+                        <ContentPresenter 
+                            x:Name="contentPresenter" 
+                            HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" 
+                            VerticalAlignment="{TemplateBinding VerticalContentAlignment}" 
+                            Margin="{TemplateBinding Padding}" 
+                            RecognizesAccessKey="True" 
+                            RenderTransformOrigin="0.5,0.5"
+                            SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" 
+                            >
+                            <ContentPresenter.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform/>
+                                    <SkewTransform/>
+                                    <RotateTransform/>
+                                    <TranslateTransform/>
+                                </TransformGroup>
+                            </ContentPresenter.RenderTransform>
+                        </ContentPresenter>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="RenderTransform" TargetName="contentPresenter">
+                                <Setter.Value>
+                                    <TransformGroup>
+                                        <ScaleTransform ScaleX="1.1" ScaleY="1.1"/>
+                                        <SkewTransform/>
+                                        <RotateTransform/>
+                                        <TranslateTransform/>
+                                    </TransformGroup>
+                                </Setter.Value>
+                            </Setter>
+                        </Trigger>
+                        <Trigger Property="IsChecked" Value="true"/>
+                        <Trigger Property="IsEnabled" Value="false">
+                            <Setter Property="Effect" TargetName="contentPresenter">
+                                <Setter.Value>
+                                    <BlurEffect/>
+                                </Setter.Value>
+                            </Setter>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True"/>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="ImageButtonContentHitTestStyle" TargetType="{x:Type Controls:ImageButton}">
+        <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="Focusable" Value="False"/>
+        <Setter Property="Background" Value="{x:Null}"/>
+        <Setter Property="BorderBrush" Value="{x:Null}"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Controls:ImageButton}">
+                    <Grid x:Name="LayoutRoot">
+                        <Image x:Name="ImageIdle" Source="{TemplateBinding ImageSourceIdle}" IsHitTestVisible="False"/>
+                        <Image x:Name="ImageActive" Source="{TemplateBinding ImageSourceActive}" IsHitTestVisible="False" Visibility="Hidden" />
+                        <Image x:Name="ImageDisabled" Source="{TemplateBinding ImageSourceDisabled}" IsHitTestVisible="False" Visibility="Hidden" />
+                        <Image x:Name="ImageHover" Source="{TemplateBinding ImageSourceHover}" IsHitTestVisible="False" Visibility="Hidden" Opacity="0.5" />
+                        <Image x:Name="ImagePressed" Source="{TemplateBinding ImageSourcePressed}" IsHitTestVisible="False" Visibility="Hidden" />
+                        <ContentPresenter 
+                            x:Name="contentPresenter" 
+                            Margin="{TemplateBinding Padding}"
+                            HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" 
+                            VerticalAlignment="{TemplateBinding VerticalContentAlignment}" 
+                            SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" 
+                            RenderTransformOrigin="0.5,0.5" RecognizesAccessKey="True" 
+                            />
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsActive" Value="True">
+                            <Setter Property="Visibility" TargetName="ImageActive" Value="Visible"/>
+                            <Setter Property="Visibility" TargetName="ImageIdle" Value="Hidden"/>
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Visibility" TargetName="ImageDisabled" Value="Visible"/>
+                            <Setter Property="Visibility" TargetName="ImageIdle" Value="Hidden"/>
+                            <Setter Property="Opacity" Value="0.75" />
+                            <Setter Property="Effect" TargetName="ImageActive">
+                                <!--if ImageSourceDisabled not specified-->
+                                <Setter.Value>
+                                    <BlurEffect Radius="3"/>
+                                </Setter.Value>
+                            </Setter>
+                        </Trigger>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Visibility" TargetName="ImageHover" Value="Visible"/>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter Property="Visibility" TargetName="ImagePressed" Value="Visible"/>
+                            <Setter Property="Visibility" TargetName="ImageIdle" Value="Hidden"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="ImageButtonDefaultHitTestStyle" TargetType="{x:Type Controls:ImageButton}">
+        <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="Focusable" Value="False"/>
+        <Setter Property="Background" Value="{x:Null}"/>
+        <Setter Property="BorderBrush" Value="{x:Null}"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Controls:ImageButton}">
+                    <Grid x:Name="LayoutRoot">
+                        <Image x:Name="ImageIdle" Source="{TemplateBinding ImageSourceIdle}" />
+                        <Image x:Name="ImageActive" Source="{TemplateBinding ImageSourceActive}" Visibility="Hidden" />
+                        <Image x:Name="ImageDisabled" Source="{TemplateBinding ImageSourceDisabled}" Visibility="Hidden" />
+                        <Image x:Name="ImageHover" Source="{TemplateBinding ImageSourceHover}" Visibility="Hidden" Opacity="0.5" />
+                        <Image x:Name="ImagePressed" Source="{TemplateBinding ImageSourcePressed}" Visibility="Hidden" />
+                        <ContentPresenter 
+                            x:Name="contentPresenter" 
+                            Margin="{TemplateBinding Padding}"
+                            HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" 
+                            VerticalAlignment="{TemplateBinding VerticalContentAlignment}" 
+                            SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" 
+                            RenderTransformOrigin="0.5,0.5" RecognizesAccessKey="True" 
+                            />
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsActive" Value="True">
+                            <Setter Property="Visibility" TargetName="ImageActive" Value="Visible"/>
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="false">
+                            <Setter Property="Visibility" TargetName="ImageDisabled" Value="Visible"/>
+                            <Setter Property="Visibility" TargetName="ImageIdle" Value="Hidden"/>
+                            <Setter Property="Opacity" Value="0.75" />
+                            <Setter Property="Effect" TargetName="ImageActive">
+                                <!--if ImageSourceDisabled not specified-->
+                                <Setter.Value>
+                                    <BlurEffect Radius="3"/>
+                                </Setter.Value>
+                            </Setter>
+                        </Trigger>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Visibility" TargetName="ImageHover" Value="Visible"/>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter Property="Visibility" TargetName="ImagePressed" Value="Visible"/>
+                            <Setter Property="Visibility" TargetName="ImageIdle" Value="Hidden"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="ImageRadioButton" TargetType="{x:Type Controls:ImageRadioButton}">
+        <Setter Property="Background" Value="#00000000"/>
+        <Setter Property="BorderBrush" Value="{x:Null}"/>
+        <Setter Property="FontFamily" Value="{DynamicResource DefaultFont}"/>
+        <Setter Property="FontSize" Value="{DynamicResource DefaultFontSize}"/>
+        <Setter Property="Foreground" Value="{DynamicResource ButtonDefaultForeground}"/>
+        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Controls:ImageRadioButton}">
+                    <Grid x:Name="ButtonGrid" 
+                            Background="{TemplateBinding Background}" 
+                            RenderTransformOrigin="0.5,0.5"
+                            >
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup x:Name="CommonStates"/>
+                            <VisualStateGroup x:Name="FocusStates"/>
+                            <VisualStateGroup x:Name="CheckStates"/>
+                            <VisualStateGroup x:Name="ValidationStates"/>
+                        </VisualStateManager.VisualStateGroups>
+                        <Image x:Name="ImageIdle" 
+                               Source="{TemplateBinding ImageSourceIdle}" 
+                               Height="{Binding ImageSourceHeight, RelativeSource={RelativeSource TemplatedParent}}" 
+                               Width="{Binding ImageSourceWidth, RelativeSource={RelativeSource TemplatedParent}}"
+                               IsHitTestVisible="True"
+                               />
+                        <Image x:Name="ImageActive" 
+                               Source="{TemplateBinding ImageSourceActive}" 
+                               Height="{Binding ImageSourceHeight, RelativeSource={RelativeSource TemplatedParent}}" 
+                               Width="{Binding ImageSourceWidth, RelativeSource={RelativeSource TemplatedParent}}"
+                               IsHitTestVisible="True" Visibility="Hidden" 
+                               />
+                        <Image x:Name="ImageDisabled" 
+                               Source="{TemplateBinding ImageSourceDisabled}" 
+                               Height="{Binding ImageSourceHeight, RelativeSource={RelativeSource TemplatedParent}}" 
+                               Width="{Binding ImageSourceWidth, RelativeSource={RelativeSource TemplatedParent}}"
+                               IsHitTestVisible="True" Visibility="Hidden" 
+                               />
+                        <Image x:Name="ImageHover" 
+                               Source="{TemplateBinding ImageSourceIdleHover}" 
+                               Height="{Binding ImageSourceHeight, RelativeSource={RelativeSource TemplatedParent}}" 
+                               Width="{Binding ImageSourceWidth, RelativeSource={RelativeSource TemplatedParent}}"
+                               IsHitTestVisible="True" Visibility="Hidden"
+                               />
+                        <Image x:Name="ImagePressed" 
+                               Source="{TemplateBinding ImageSourceIdlePressed}" 
+                               Height="{Binding ImageSourceHeight, RelativeSource={RelativeSource TemplatedParent}}" 
+                               Width="{Binding ImageSourceWidth, RelativeSource={RelativeSource TemplatedParent}}"
+                               IsHitTestVisible="True" Visibility="Hidden" 
+                               />
+                        <ContentPresenter x:Name="contentPresenter" Grid.Row="1" 
+                            HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" 
+                            VerticalAlignment="{TemplateBinding VerticalContentAlignment}" 
+                            SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" 
+                            Content="{TemplateBinding Content}" Margin="{TemplateBinding Padding}" 
+                            RecognizesAccessKey="True" RenderTransformOrigin="0.5,0.5" 
+                            />
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Opacity" TargetName="ButtonGrid" Value="0.2" />
+                            <Setter Property="Visibility" TargetName="ImageActive" Value="Hidden"/>
+                            <Setter Property="Visibility" TargetName="ImageDisabled" Value="Visible"/>
+                            <Setter Property="Visibility" TargetName="ImageIdle" Value="Hidden"/>
+                        </Trigger>
+                        <Trigger Property="IsChecked" Value="True">
+                            <Setter Property="Visibility" TargetName="ImageIdle" Value="Hidden"/>
+                            <Setter Property="Visibility" TargetName="ImageActive" Value="Visible"/>
+                            <Setter Property="Source" TargetName="ImageHover" Value="{Binding ImageSourceActiveHover, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Controls:ImageRadioButton}}}"/>
+                            <Setter Property="Source" TargetName="ImagePressed" Value="{Binding ImageSourceActivePressed, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Controls:ImageRadioButton}}}"/>
+                            <!--
+                            <Setter Property="Effect" TargetName="ButtonGrid">
+                                <Setter.Value>
+                                    <DropShadowEffect BlurRadius="8" Color="White" Opacity="1" ShadowDepth="0"/>
+                                </Setter.Value>
+                            </Setter>
+                            -->
+                        </Trigger>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Visibility" TargetName="ImageHover" Value="Visible"/>
+                            <Setter Property="Visibility" TargetName="ImageActive" Value="Hidden"/>
+                            <Setter Property="Visibility" TargetName="ImageIdle" Value="Hidden"/>
+                            <!--
+                            <Setter Property="RenderTransform" TargetName="ButtonGrid">
+                                <Setter.Value>
+                                    <TransformGroup>
+                                        <ScaleTransform ScaleX="1.1" ScaleY="1.1"/>
+                                        <SkewTransform/>
+                                        <RotateTransform/>
+                                        <TranslateTransform/>
+                                    </TransformGroup>
+                                </Setter.Value>
+                            </Setter>
+                            -->
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter Property="Visibility" TargetName="ImagePressed" Value="Visible"/>
+                            <Setter Property="Visibility" TargetName="ImageActive" Value="Hidden"/>
+                            <Setter Property="Visibility" TargetName="ImageIdle" Value="Hidden"/>
+                            <!--
+                            <Setter Property="Effect" TargetName="ButtonGrid" Value="{DynamicResource ButtonPressedEffect}"/>
+                            -->
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="ImageToggleButtonStyle" TargetType="{x:Type Controls:ImageToggleButton}">
+        <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="Focusable" Value="False"/>
+        <Setter Property="Background" Value="{x:Null}"/>
+        <Setter Property="BorderBrush" Value="{x:Null}"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Controls:ImageToggleButton}">
+                    <Grid x:Name="LayoutRoot">
+                        <Image x:Name="ImageIdle" 
+                               Height="{Binding ImageSourceHeight, RelativeSource={RelativeSource TemplatedParent}}" 
+                               Width="{Binding ImageSourceWidth, RelativeSource={RelativeSource TemplatedParent}}"
+                               Source="{TemplateBinding ImageSourceIdle}" 
+                               />
+                        <Image x:Name="ImageActive" 
+                               Height="{Binding ImageSourceHeight, RelativeSource={RelativeSource TemplatedParent}}" 
+                               Width="{Binding ImageSourceWidth, RelativeSource={RelativeSource TemplatedParent}}"
+                               Source="{TemplateBinding ImageSourceActive}" 
+                               Visibility="Hidden" 
+                               />
+                        <Image x:Name="ImageDisabled" 
+                               Height="{Binding ImageSourceHeight, RelativeSource={RelativeSource TemplatedParent}}" 
+                               Width="{Binding ImageSourceWidth, RelativeSource={RelativeSource TemplatedParent}}"
+                               Source="{TemplateBinding ImageSourceIdleDisabled}" 
+                               Visibility="Hidden" 
+                               />
+                        <Image x:Name="ImageHover" 
+                               Height="{Binding ImageSourceHeight, RelativeSource={RelativeSource TemplatedParent}}" 
+                               Width="{Binding ImageSourceWidth, RelativeSource={RelativeSource TemplatedParent}}"
+                               Source="{TemplateBinding ImageSourceIdleHover}" 
+                               Visibility="Hidden" Opacity="0.95" 
+                               />
+                        <Image x:Name="ImagePressed" 
+                               Height="{Binding ImageSourceHeight, RelativeSource={RelativeSource TemplatedParent}}" 
+                               Width="{Binding ImageSourceWidth, RelativeSource={RelativeSource TemplatedParent}}"
+                               Source="{TemplateBinding ImageSourceIdlePressed}" 
+                               Visibility="Hidden" 
+                               />
+                        <ContentPresenter 
+                            x:Name="contentPresenter" 
+                            Margin="{TemplateBinding Padding}"
+                            HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" 
+                            VerticalAlignment="{TemplateBinding VerticalContentAlignment}" 
+                            SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" 
+                            RenderTransformOrigin="0.5,0.5" RecognizesAccessKey="True" 
+                            />
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsChecked" Value="True">
+                            <Setter Property="Visibility" TargetName="ImageIdle" Value="Hidden"/>
+                            <Setter Property="Visibility" TargetName="ImageActive" Value="Visible"/>
+                            <Setter Property="Source" TargetName="ImageHover" Value="{Binding ImageSourceActiveHover, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Controls:ImageToggleButton}}}"/>
+                            <Setter Property="Source" TargetName="ImagePressed" Value="{Binding ImageSourceActivePressed, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Controls:ImageToggleButton}}}"/>
+                            <Setter Property="Source" TargetName="ImageDisabled" Value="{Binding ImageSourceActiveDisabled, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Controls:ImageToggleButton}}}"/>
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="false">
+                            <Setter Property="Visibility" TargetName="ImageActive" Value="Hidden"/>
+                            <Setter Property="Visibility" TargetName="ImageDisabled" Value="Visible"/>
+                            <Setter Property="Visibility" TargetName="ImageIdle" Value="Hidden"/>
+                        </Trigger>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Visibility" TargetName="ImageHover" Value="Visible"/>
+                            <Setter Property="Visibility" TargetName="ImageActive" Value="Hidden"/>
+                            <Setter Property="Visibility" TargetName="ImageIdle" Value="Hidden"/>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter Property="Visibility" TargetName="ImagePressed" Value="Visible"/>
+                            <Setter Property="Visibility" TargetName="ImageActive" Value="Hidden"/>
+                            <Setter Property="Visibility" TargetName="ImageIdle" Value="Hidden"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+
+</ResourceDictionary>

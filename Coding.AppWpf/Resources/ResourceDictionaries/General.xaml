@@ -1,0 +1,27 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+    xmlns:ei="http://schemas.microsoft.com/expression/2010/interactions" 
+    xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity" 
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:System="clr-namespace:System;assembly=mscorlib" 
+    xmlns:Controls="clr-namespace:Coding.AppWpf.Controls"
+    xmlns:Common_Controls="clr-namespace:Common.Wpf.Controls;assembly=Common.Wpf"
+    mc:Ignorable="d"
+    >
+
+    <FontFamily x:Key="DefaultBoldFont">Impact</FontFamily>
+    <FontFamily x:Key="DefaultFont">Segoe UI</FontFamily>
+    <System:Double x:Key="DefaultBigFontSize">48</System:Double>
+    <System:Double x:Key="DefaultFontSize">14.667</System:Double>
+    <System:Double x:Key="DefaultEntryFontSize">16</System:Double>
+    <System:Double x:Key="DefaultMaxWidth">320</System:Double>
+    <System:Double x:Key="DefaultPopupMaxWidth">160</System:Double>
+    <System:Double x:Key="DefaultSmallSize">12</System:Double>
+    <System:Double x:Key="DefaultSmallerSize">10.667</System:Double>
+    <System:Double x:Key="DefaultTextSize">13.333</System:Double>
+    <System:Double x:Key="DefaultTitleSize">24</System:Double>
+
+
+</ResourceDictionary>
